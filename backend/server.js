@@ -2,6 +2,7 @@
  import express from "express";
  import cors from "cors";
  import { connectDB } from "./config/db.js";
+ import authRouts from "./routes/auth.js"
  import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
  const app = express();
@@ -39,6 +40,10 @@ app.use("/api/health", (req,res) => {
 app.use("/", (req,res) => {
     res.json({ message: "Welcome to the Habit Tracker API" });
 });
+
+
+app.use("/api/auth",authRouts);
+
 
 app.use(notFound);
 app.use(errorHandler);
