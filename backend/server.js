@@ -3,6 +3,7 @@
  import cors from "cors";
  import { connectDB } from "./config/db.js";
  import authRouts from "./routes/auth.js"
+ import habitRoutes from "./routes/habit.js"
  import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
  const app = express();
@@ -43,6 +44,7 @@ app.use("/", (req,res) => {
 
 
 app.use("/api/auth",authRouts);
+app.use("/api/habits",habitRoutes)
 
 
 app.use(notFound);
